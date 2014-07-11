@@ -10,6 +10,13 @@ describe Jan::Parser do
     end
   end
 
+  describe ".body" do
+    it "should return string except last digit" do
+      actual = Jan::Parser.body(code)
+      expect(actual).to eq("123456789012")
+    end
+  end
+
   describe ".even_digits" do
     it "should return digits in even number-th position" do
       actual = Jan::Parser.even_digits(code)
