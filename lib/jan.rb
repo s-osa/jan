@@ -1,5 +1,6 @@
 require "jan/version"
 require "jan/parser"
+require "jan/check_digit_calculator"
 require "jan/validator"
 
 class Jan
