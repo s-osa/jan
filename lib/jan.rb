@@ -1,5 +1,14 @@
 require "jan/version"
+require "jan/validator"
 
-module Jan
-  # Your code goes here...
+class Jan
+  attr_accessor :code
+
+  def initialize(code)
+    @code = code
+  end
+
+  def valid?
+    Validator.validate(@code)
+  end
 end

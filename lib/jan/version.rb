@@ -1,3 +1,3 @@
-module Jan
+class Jan
   VERSION = "0.0.1"
 end
