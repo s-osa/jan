@@ -1,5 +1,6 @@
 require "jan/version"
 require "jan/parser"
+require "jan/check_digit_calculator"
 require "jan/validator"
 
 class Jan
@@ -13,8 +14,8 @@ class Jan
     Validator.validate(@code)
   end
 
-  def checkdigit
-    Parser.checkdigit(@code)
+  def check_digit
+    Parser.check_digit(@code)
   end
 
   def even_digits
