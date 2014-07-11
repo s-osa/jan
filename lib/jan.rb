@@ -1,5 +1,5 @@
 require "jan/version"
+require "jan/validator"
 
-module Jan
-  # Your code goes here...
+class Jan
 end
