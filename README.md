@@ -1,6 +1,8 @@
 # Jan
 
-A JAN utility gem.
+[![Build Status](https://travis-ci.org/s-osa/jan.svg?branch=master)](https://travis-ci.org/s-osa/jan)
+
+JANコードを扱うためのgemです。
 
 ## Installation
 
