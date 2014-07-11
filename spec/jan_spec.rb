@@ -21,10 +21,10 @@ describe Jan do
     end
   end
 
-  describe "#checkdigit" do
+  describe "#check_digit" do
     it "should return last digit" do
       jan = Jan.new("4901277241126")
-      expect(jan.checkdigit).to eq(6)
+      expect(jan.check_digit).to eq(6)
     end
   end
 
@@ -36,7 +36,7 @@ describe Jan do
   end
 
   describe "#odd_digits" do
-    it "should return digits in odd number-th position except checkdigit" do
+    it "should return digits in odd number-th position except check digit" do
       jan = Jan.new("4901277241126")
       expect(jan.odd_digits).to eq([4,0,2,7,4,1])
     end

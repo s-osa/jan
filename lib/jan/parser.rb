@@ -2,7 +2,7 @@ class Jan
   module Parser
     module_function
 
-    def checkdigit(code)
+    def check_digit(code)
       code[-1].to_i
     end
 
