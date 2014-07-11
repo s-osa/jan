@@ -6,11 +6,7 @@ class Jan
       def validate(code)
         code = code.to_s
         return false unless [8,13].include?(code.size)
-
-        even_sum = Parser.even_digits(code).reduce(&:+)
-        odd_sum  = Parser.odd_digits(code).reduce(&:+)
-
-        Parser.checkdigit(code) == 10 - (even_sum * 3 + odd_sum) % 10
+        Parser.checkdigit(code) == CheckDigitCalculator.calculate(Parser.body(code))
       end
     end
   end
