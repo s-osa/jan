@@ -1,4 +1,5 @@
 require "jan/version"
+require "jan/parser"
 require "jan/validator"
 
 class Jan
