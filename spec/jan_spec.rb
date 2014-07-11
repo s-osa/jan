@@ -20,4 +20,25 @@ describe Jan do
       end
     end
   end
+
+  describe "#checkdigit" do
+    it "should return last digit" do
+      jan = Jan.new("4901277241126")
+      expect(jan.checkdigit).to eq(6)
+    end
+  end
+
+  describe "#even_digits" do
+    it "should return digits in even number-th position" do
+      jan = Jan.new("4901277241126")
+      expect(jan.even_digits).to eq([9,1,7,2,1,2])
+    end
+  end
+
+  describe "#odd_digits" do
+    it "should return digits in odd number-th position except checkdigit" do
+      jan = Jan.new("4901277241126")
+      expect(jan.odd_digits).to eq([4,0,2,7,4,1])
+    end
+  end
 end
