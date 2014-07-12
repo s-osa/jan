@@ -2,25 +2,72 @@
 
 [![Build Status](https://travis-ci.org/s-osa/jan.svg?branch=master)](https://travis-ci.org/s-osa/jan)
 
-JANコードを扱うためのgemです。
+A small utility for JAN code.
+
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
-    gem 'jan'
+```ruby
+gem 'jan'
+```
 
 And then execute:
 
-    $ bundle
+```sh
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install jan
+```sh
+$ gem install jan
+```
+
 
 ## Usage
 
-TODO: Write usage instructions here
+### Basic usage
+
+```ruby
+jan = Jan.new("4901277241126")
+jan.valid? # => true
+
+Jan::Validator.validate("4901277241126") # => true
+```
+
+### Get elements
+
+```ruby
+jan = Jan.new("4901277241126")
+jan.check_digit # => 6
+jan.body # => "490127724112"
+
+Jan::Parser.check_digit("4901277241126") # => 6
+Jan::Parser.body("4901277241126") # => "490127724112"
+```
+
+### Distinct in-store code
+
+```ruby
+jan = Jan.new("4901277241126")
+jan.instore_code? # => false
+
+Jan::Paser.instore_code?("2163179230340") # => true
+```
+
+### Generate random code
+
+```ruby
+Jan::Random.code # => "5689450935688"
+Jan::Random.code(8) # => "11774853"
+
+Jan::Random.instore_code # => "2799375754394"
+Jan::Random.instore_code(8) # => "27393086"
+
+```
+
 
 ## Contributing
 
