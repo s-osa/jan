@@ -17,5 +17,9 @@ class Jan
     def odd_digits(code)
       code.split('').reverse.map(&:to_i).select.with_index(1){|_d, index| index.odd? }.reverse[0..-2]
     end
+
+    def instore_code?(code)
+      InstorePrefixes.include?(code[0..1])
+    end
   end
 end

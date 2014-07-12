@@ -5,6 +5,8 @@ require "jan/validator"
 require "jan/random"
 
 class Jan
+  InstorePrefixes = %w(02 20 21 22 23 24 25 26 27 28 29)
+
   attr_accessor :code
 
   def initialize(code)
@@ -25,5 +27,9 @@ class Jan
 
   def odd_digits
     Parser.odd_digits(@code)
+  end
+
+  def instore_code?
+    Parser.instore_code?(@code)
   end
 end
