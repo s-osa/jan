@@ -37,6 +37,15 @@ jan.valid? # => true
 Jan::Validator.validate("4901277241126") # => true
 ```
 
+### Calculate check digit
+
+```ruby
+# Correct code: "4901277241126"
+
+Jan::CheckDigitCalculator.calculate("490127724112") # => 6
+```
+
+
 ### Get elements
 
 ```ruby
