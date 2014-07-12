@@ -41,4 +41,27 @@ describe Jan do
       expect(jan.odd_digits).to eq([4,0,2,7,4,1])
     end
   end
+
+  describe "#instore_code?" do
+    it "should return digits in odd number-th position except check digit" do
+      jan = Jan.new("4901277241126")
+      expect(jan.odd_digits).to eq([4,0,2,7,4,1])
+    end
+  end
+
+  describe "#instore_code?" do
+    context "instore code" do
+      it "should be true" do
+        jan = Jan.new("2101085089347")
+        expect(jan).to be_instore_code
+      end
+    end
+
+    context "global code" do
+      it "should be false" do
+        jan = Jan.new("4901085089347")
+        expect(jan).not_to be_instore_code
+      end
+    end
+  end
 end
