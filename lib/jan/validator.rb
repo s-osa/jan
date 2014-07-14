@@ -14,7 +14,7 @@ class Jan
     end
 
     def validate_check_digit(code)
-      Parser.check_digit(code) == CheckDigitCalculator.calculate(Parser.body(code))
+      Parser.check_digit(code.to_s) == CheckDigitCalculator.calculate(Parser.body(code.to_s))
     end
   end
 end
