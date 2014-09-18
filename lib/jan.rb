@@ -19,6 +19,10 @@ class Jan < ::String
     Parser.check_digit(self)
   end
 
+  def body
+    Parser.body(self)
+  end
+
   def even_digits
     Parser.even_digits(self)
   end
