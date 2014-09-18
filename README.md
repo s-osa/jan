@@ -1,5 +1,6 @@
 # Jan
 
+[![Gem Version](https://badge.fury.io/rb/jan.svg)](http://badge.fury.io/rb/jan)
 [![Build Status](https://travis-ci.org/s-osa/jan.svg?branch=master)](https://travis-ci.org/s-osa/jan)
 
 A small utility for JAN code.
