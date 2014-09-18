@@ -1,35 +1,33 @@
-require "jan/version"
-require "jan/parser"
 require "jan/check_digit_calculator"
-require "jan/validator"
+require "jan/parser"
 require "jan/random"
+require "jan/validator"
+require "jan/version"
 
-class Jan
-  InstorePrefixes = %w(02 20 21 22 23 24 25 26 27 28 29)
-
-  attr_accessor :code
+class Jan < ::String
+  InstoreCodePrefixes = %w(02 20 21 22 23 24 25 26 27 28 29)
 
   def initialize(code)
-    @code = code
+    super(code.to_s)
   end
 
   def valid?
-    Validator.validate(@code)
+    Validator.validate(self)
   end
 
   def check_digit
-    Parser.check_digit(@code)
+    Parser.check_digit(self)
   end
 
   def even_digits
-    Parser.even_digits(@code)
+    Parser.even_digits(self)
   end
 
   def odd_digits
-    Parser.odd_digits(@code)
+    Parser.odd_digits(self)
   end
 
   def instore_code?
-    Parser.instore_code?(@code)
+    Parser.instore_code?(self)
   end
 end

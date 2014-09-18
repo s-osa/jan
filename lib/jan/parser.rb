@@ -1,4 +1,4 @@
-class Jan
+class Jan < ::String
   module Parser
     module_function
 
@@ -19,7 +19,7 @@ class Jan
     end
 
     def instore_code?(code)
-      InstorePrefixes.include?(code[0..1])
+      InstoreCodePrefixes.include?(code[0..1])
     end
   end
 end

@@ -1,6 +1,6 @@
 require "jan/parser"
 
-class Jan
+class Jan < ::String
   module CheckDigitCalculator
     module_function
 
