@@ -5,7 +5,7 @@ require "jan/validator"
 require "jan/version"
 
 class Jan < ::String
-  InstorePrefixes = %w(02 20 21 22 23 24 25 26 27 28 29)
+  InstoreCodePrefixes = %w(02 20 21 22 23 24 25 26 27 28 29)
 
   def initialize(code)
     super(code.to_s)

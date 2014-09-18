@@ -12,7 +12,7 @@ class Jan < ::String
     end
 
     def instore_code(size=13)
-      build(size - 2, InstorePrefixes.sample)
+      build(size - 2, InstoreCodePrefixes.sample)
     end
 
     def build(size, code="")
