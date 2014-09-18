@@ -1,6 +1,13 @@
 require "spec_helper"
 
 describe Jan do
+  describe "#initialize" do
+    let(:jan_code){ "4901085089347" }
+    subject{ described_class.new(jan_code) }
+    it{ is_expected.to be_a(String) }
+    it{ is_expected.to eq(jan_code) }
+  end
+
   describe "#valid?" do
     context "valid codes" do
       valid_codes.each do |code|

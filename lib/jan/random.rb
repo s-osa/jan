@@ -1,7 +1,7 @@
 require "jan/parser"
 require "jan/check_digit_calculator"
 
-class Jan
+class Jan < ::String
   module Random
     module_function
 

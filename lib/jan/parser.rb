@@ -1,4 +1,4 @@
-class Jan
+class Jan < ::String
   module Parser
     module_function
 

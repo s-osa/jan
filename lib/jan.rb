@@ -4,13 +4,14 @@ require "jan/check_digit_calculator"
 require "jan/validator"
 require "jan/random"
 
-class Jan
+class Jan < ::String
   InstorePrefixes = %w(02 20 21 22 23 24 25 26 27 28 29)
 
   attr_accessor :code
 
   def initialize(code)
     @code = code
+    super(code.to_s)
   end
 
   def valid?
