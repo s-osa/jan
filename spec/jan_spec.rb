@@ -31,6 +31,12 @@ describe Jan do
     it("should return last digit"){ is_expected.to eq(6) }
   end
 
+  describe "#body" do
+    let(:jan){ described_class.new("4901277241126") }
+    subject{ jan.body }
+    it("should return digits without check digit"){ is_expected.to eq("490127724112") }
+  end
+
   describe "#even_digits" do
     let(:jan){ described_class.new("4901277241126") }
     subject{ jan.even_digits }
