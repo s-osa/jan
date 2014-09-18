@@ -4,71 +4,54 @@ describe Jan do
   describe "#initialize" do
     let(:jan_code){ "4901085089347" }
     subject{ described_class.new(jan_code) }
+    it{ is_expected.to be_an_instance_of(described_class) }
     it{ is_expected.to be_a(String) }
-    it{ is_expected.to eq(jan_code) }
+    it("should equals to given string"){ is_expected.to eq(jan_code) }
   end
 
   describe "#valid?" do
     context "valid codes" do
-      valid_codes.each do |code|
-        it "#{code} should be valid" do
-          jan = Jan.new(code)
-          expect(jan.valid?).to be true
-        end
+      valid_codes.each do |valid_code|
+        subject{ described_class.new(valid_code) }
+        it("#{valid_code} should be valid"){ is_expected.to be_valid }
       end
     end
 
     context "invalid codes" do
-      invalid_codes.each do |code|
-        it "#{code} should be invalid" do
-          jan = Jan.new(code)
-          expect(jan.valid?).to be false
-        end
+      invalid_codes.each do |invalid_code|
+        subject{ described_class.new(invalid_code) }
+        it("#{invalid_code} should be invalid"){ is_expected.not_to be_valid }
       end
     end
   end
 
   describe "#check_digit" do
-    it "should return last digit" do
-      jan = Jan.new("4901277241126")
-      expect(jan.check_digit).to eq(6)
-    end
+    let(:jan){ described_class.new("4901277241126") }
+    subject{ jan.check_digit }
+    it("should return last digit"){ is_expected.to eq(6) }
   end
 
   describe "#even_digits" do
-    it "should return digits in even number-th position" do
-      jan = Jan.new("4901277241126")
-      expect(jan.even_digits).to eq([9,1,7,2,1,2])
-    end
+    let(:jan){ described_class.new("4901277241126") }
+    subject{ jan.even_digits }
+    it("should return digits in even number-th position"){ is_expected.to eq([9,1,7,2,1,2]) }
   end
 
   describe "#odd_digits" do
-    it "should return digits in odd number-th position except check digit" do
-      jan = Jan.new("4901277241126")
-      expect(jan.odd_digits).to eq([4,0,2,7,4,1])
-    end
-  end
-
-  describe "#instore_code?" do
-    it "should return digits in odd number-th position except check digit" do
-      jan = Jan.new("4901277241126")
-      expect(jan.odd_digits).to eq([4,0,2,7,4,1])
-    end
+    let(:jan){ described_class.new("4901277241126") }
+    subject{ jan.odd_digits }
+    it("should return digits in odd number-th position except check digit"){ is_expected.to eq([4,0,2,7,4,1]) }
   end
 
   describe "#instore_code?" do
     context "instore code" do
-      it "should be true" do
-        jan = Jan.new("2101085089347")
-        expect(jan).to be_instore_code
-      end
+      subject{ described_class.new("2101085089347") }
+      it("should be true"){ is_expected.to be_instore_code }
     end
 
     context "global code" do
-      it "should be false" do
-        jan = Jan.new("4901085089347")
-        expect(jan).not_to be_instore_code
-      end
+      subject{ described_class.new("4901085089347") }
+      it("should be false"){ is_expected.not_to be_instore_code }
     end
   end
 end
