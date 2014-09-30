@@ -64,7 +64,7 @@ Jan::Parser.body("4901277241126") # => "490127724112"
 jan = Jan.new("4901277241126")
 jan.instore_code? # => false
 
-Jan::Paser.instore_code?("2163179230340") # => true
+Jan::Parser.instore_code?("2163179230340") # => true
 ```
 
 ### Generate random code
