@@ -58,7 +58,7 @@ Jan::Parser.check_digit("4901277241126") # => 6
 Jan::Parser.body("4901277241126") # => "490127724112"
 ```
 
-### Distinct in-store code
+### Discriminate in-store code
 
 ```ruby
 jan = Jan.new("4901277241126")
