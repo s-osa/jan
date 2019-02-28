@@ -3,8 +3,13 @@
 [![Gem Version](https://badge.fury.io/rb/jan.svg)](http://badge.fury.io/rb/jan)
 [![Build Status](https://travis-ci.org/s-osa/jan.svg?branch=master)](https://travis-ci.org/s-osa/jan)
 
-A small utility for JAN code.
+[jan](https://rubygems.org/gems/jan) is a small utility gem for JAN code.
 
+## Supported versions
+
+- Ruby
+  - 2.6.x
+  - 2.5.x
 
 ## Installation
 
@@ -26,63 +31,44 @@ Or install it yourself as:
 $ gem install jan
 ```
 
-
 ## Usage
 
-### Basic usage
+### Basic
 
 ```ruby
-jan = Jan.new("4901277241126")
-jan.valid? # => true
+code = Jan::Code.new('4901277241126')
 
-Jan::Validator.validate("4901277241126") # => true
+code.valid? # => true
+
+code.body # => '490127724112'
+code.check_digit # => '6'
+
+code.instore_code? # => false
 ```
 
 ### Calculate check digit
 
 ```ruby
-# Correct code: "4901277241126"
+body = Jan::CodeBody.new('490127724112') 
 
-Jan::CheckDigitCalculator.calculate("490127724112") # => 6
-```
-
-
-### Get elements
-
-```ruby
-jan = Jan.new("4901277241126")
-jan.check_digit # => 6
-jan.body # => "490127724112"
-
-Jan::Parser.check_digit("4901277241126") # => 6
-Jan::Parser.body("4901277241126") # => "490127724112"
-```
-
-### Discriminate in-store code
-
-```ruby
-jan = Jan.new("4901277241126")
-jan.instore_code? # => false
-
-Jan::Parser.instore_code?("2163179230340") # => true
+body.calculate_check_digit # => '6'
+body.generage_code # => '4901277241126'
 ```
 
 ### Generate random code
 
 ```ruby
-Jan::Random.code # => "5689450935688"
-Jan::Random.code(8) # => "11774853"
+random = Jan::Random.new
 
-Jan::Random.instore_code # => "2799375754394"
-Jan::Random.instore_code(8) # => "27393086"
-
+random.code # => '5689450935688'
+random.instore_code # => '2799375754394'
 ```
-
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/jan/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+Bug reports and pull requests are welcome.
+
+- Install dependencies
+  - `bundle install`
+- Run tests
+  - `rake spec`

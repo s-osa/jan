@@ -1,23 +1,20 @@
-require "jan/parser"
-require "jan/check_digit_calculator"
-
-class Jan < ::String
-  module Random
-    module_function
-
-    Digits = %w(1 2 3 4 5 6 7 8 9 0)
-
-    def code(size=13)
-      build(size)
+module Jan
+  class Random
+    # @param generator [Random] Random-like object which respond to #rand(max)
+    def initialize(generator: ::Random.new)
+      @generator = generator
     end
 
-    def instore_code(size=13)
-      build(size - 2, InstoreCodePrefixes.sample)
+    # @return [Jan::Code]
+    def code
+      twelve_digits_str = sprintf('%012d', @generator.rand(1_000_000_000_000))
+      Jan::CodeBody.new(twelve_digits_str).generate_code
     end
 
-    def build(size, code="")
-      size.times{ code += Digits.sample }
-      Parser.body(code) +  CheckDigitCalculator.calculate(Parser.body(code)).to_s
+    # @return [Jan::Code]
+    def instore_code
+      twelve_digits_str = '2' + sprintf('%011d', @generator.rand(100_000_000_000))
+      Jan::CodeBody.new(twelve_digits_str).generate_code
     end
   end
 end
