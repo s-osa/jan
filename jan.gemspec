@@ -7,8 +7,8 @@ Gem::Specification.new do |spec|
   spec.version       = Jan::VERSION
   spec.authors       = ['OSA Shunsuke']
   spec.email         = ['hhelibebcnofnenamg@gmail.com']
-  spec.summary       = %q{JAN utility gem}
-  spec.description   = %q{JAN utility gem}
+  spec.summary       = %q{Simple gem for JAN code}
+  spec.description   = %q{Validate and generate JAN code}
   spec.homepage      = 'https://github.com/s-osa/jan'
   spec.license       = 'MIT'
 
@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake'
-  spec.add_development_dependency 'rspec'
+  spec.add_development_dependency 'bundler', '~> 2.0'
+  spec.add_development_dependency 'rake', '~> 12.3'
+  spec.add_development_dependency 'rspec', '~> 3.8'
 end
