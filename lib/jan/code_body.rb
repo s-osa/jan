@@ -10,7 +10,7 @@ module Jan
 
     # @return [boolean]
     def valid?
-      @code_body.match?(/\A\d{12}\z/)
+      @code_body.match?(/\A(\d{12}|\d{7})\z/)
     end
 
     # @return [Jan::CheckDigit]
