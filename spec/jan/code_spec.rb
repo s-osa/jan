@@ -7,6 +7,8 @@ describe Jan::Code do
         0000000000000
         4901277241126
         2000000000015
+        00000000
+        49123456
       ]
 
       valid_codes.each do |valid_code|
@@ -18,8 +20,10 @@ describe Jan::Code do
       invalid_codes = [
         '11',
         '123abc',
+        '4901277241127', #Invalid check digit
         '4901277 241126',
         '4901277 24112',
+        '49123457', # Invalid check digit
       ]
 
       invalid_codes.each do |invalid_code|
