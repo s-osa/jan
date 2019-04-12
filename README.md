@@ -43,7 +43,8 @@ code.valid? # => true
 code.body # => '490127724112'
 code.check_digit # => '6'
 
-code.instore_code? # => false
+code.source_marking? # => true
+code.instore_marking? # => false
 ```
 
 ### Calculate check digit
