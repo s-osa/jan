@@ -18,8 +18,19 @@ module Jan
     end
 
     # @return [boolean]
+    # @deprecated Use `instore_marking?` instead.
     def instore_code?
+      instore_marking?
+    end
+
+    # @return [boolean]
+    def instore_marking?
       @body.start_with?('2')
+    end
+
+    # @return [boolean]
+    def source_marking?
+      !instore_marking?
     end
   end
 end

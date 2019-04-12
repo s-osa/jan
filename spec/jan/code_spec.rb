@@ -45,4 +45,24 @@ describe Jan::Code do
       it('is false'){ expect(described_class.new('4901277241126')).not_to be_instore_code }
     end
   end
+
+  describe '#instore_marking?' do
+    context 'instore marking' do
+      it('is true'){ expect(described_class.new('2101085089347')).to be_instore_marking }
+    end
+
+    context 'source marking' do
+      it('is false'){ expect(described_class.new('4901277241126')).not_to be_instore_marking }
+    end
+  end
+
+  describe '#source_marking?' do
+    context 'instore marking' do
+      it('is true'){ expect(described_class.new('4901277241126')).to be_source_marking }
+    end
+
+    context 'source marking' do
+      it('is false'){ expect(described_class.new('2101085089347')).not_to be_source_marking }
+    end
+  end
 end
