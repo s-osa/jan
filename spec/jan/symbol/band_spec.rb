@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Jan::Symbol::Module do
+describe Jan::Symbol::Band do
   describe 'initializer' do
     it 'receives width and color' do
       bar = described_class.new(1, color: 'black')

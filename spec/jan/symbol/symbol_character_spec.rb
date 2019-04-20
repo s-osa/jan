@@ -47,15 +47,15 @@ describe Jan::Symbol::SymbolCharacter do
   describe 'Set A' do
     set_a_mappings.each do |name, valid_pattern|
       it "has valid pattern in #{name}" do
-        modules = described_class.new(name).modules
+        bands = described_class.new(name).bands
 
-        expect(modules).to eq valid_pattern
+        expect(bands).to eq valid_pattern
 
         # Width of symbol character must be 7X
-        expect(modules.sum(&:width)).to eq 7
+        expect(bands.sum(&:width)).to eq 7
 
         # Set A symbol character has odd parity
-        expect(modules.grep(Jan::Symbol::Bar).sum(&:width)).to be_odd
+        expect(bands.grep(Jan::Symbol::Bar).sum(&:width)).to be_odd
       end
     end
   end
@@ -63,15 +63,15 @@ describe Jan::Symbol::SymbolCharacter do
   describe 'Set B' do
     set_b_mappings.each do |name, valid_pattern|
       it "has valid pattern in #{name}" do
-        modules = described_class.new(name).modules
+        bands = described_class.new(name).bands
 
-        expect(modules).to eq valid_pattern
+        expect(bands).to eq valid_pattern
 
         # Width of symbol character must be 7X
-        expect(modules.sum(&:width)).to eq 7
+        expect(bands.sum(&:width)).to eq 7
 
         # Set A symbol character has odd parity
-        expect(modules.grep(Jan::Symbol::Bar).sum(&:width)).to be_even
+        expect(bands.grep(Jan::Symbol::Bar).sum(&:width)).to be_even
       end
     end
   end
@@ -79,15 +79,15 @@ describe Jan::Symbol::SymbolCharacter do
   describe 'Set C' do
     set_c_mappings.each do |name, valid_pattern|
       it "has valid pattern in #{name}" do
-        modules = described_class.new(name).modules
+        bands = described_class.new(name).bands
 
-        expect(modules).to eq valid_pattern
+        expect(bands).to eq valid_pattern
 
         # Width of symbol character must be 7X
-        expect(modules.sum(&:width)).to eq 7
+        expect(bands.sum(&:width)).to eq 7
 
         # Set A symbol character has odd parity
-        expect(modules.grep(Jan::Symbol::Bar).sum(&:width)).to be_even
+        expect(bands.grep(Jan::Symbol::Bar).sum(&:width)).to be_even
       end
     end
   end

@@ -1,6 +1,8 @@
+require 'jan/symbol/band'
+
 module Jan
   class Symbol
-    class Space < Module
+    class Space < Band
       # @param width [Integer]
       # @param color [String]
       def initialize(width, color: 'white')

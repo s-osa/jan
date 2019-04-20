@@ -10,8 +10,8 @@ module Jan
         @name = name
       end
 
-      # @return [Array<Jan::Symbol::Module>]
-      def modules
+      # @return [Array<Jan::Symbol::Band>]
+      def bands
         set_name, digit = @name.split('')
 
         case set_name

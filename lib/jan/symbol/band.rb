@@ -1,6 +1,6 @@
 module Jan
   class Symbol
-    class Module
+    class Band
       # @param width [Integer]
       # @param color [String]
       def initialize(width, color:)
@@ -10,7 +10,7 @@ module Jan
 
       attr_reader :width, :color
 
-      # @param other [Jan::Symbol::Module]
+      # @param other [Jan::Symbol::Band]
       # @return [boolean]
       def ==(other)
         self.width == other.width && self.color == other.color

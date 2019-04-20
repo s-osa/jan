@@ -1,4 +1,3 @@
-require 'jan/symbol/module'
 require 'jan/symbol/bar'
 require 'jan/symbol/space'
 require 'jan/symbol/symbol_character'
