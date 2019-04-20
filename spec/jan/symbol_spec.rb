@@ -45,4 +45,8 @@ describe Jan::Symbol do
       end
     end
   end
+
+  describe '#svg' do
+    it 'returns SVG string'
+  end
 end

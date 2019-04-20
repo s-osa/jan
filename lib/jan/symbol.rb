@@ -1,3 +1,5 @@
+require 'builder'
+
 require 'jan/symbol/band_pattern'
 require 'jan/symbol/band'
 
@@ -25,6 +27,28 @@ module Jan
     def codepoints
       additional_digit, *digits = @code.each_char.to_a
       variable_parity_encodation_sequence(additional_digit).zip(digits).map(&:join)
+    end
+
+    # EXPERIMENTAL
+    #
+    # @return [String]
+    def svg
+      x = 0
+      height = 60
+
+      builder = Builder::XmlMarkup.new(indent: 2)
+      builder.instruct!(:xml, version: '1.0', encoding: 'UTF-8')
+      builder.svg(xmlns: 'http://www.w3.org/2000/svg', width: 113, height: height) do |svg|
+        svg.rect(x: 0, y: 0, width: 113, height: 60, fill: 'white')
+        band_patterns.each do |band_pattern|
+          svg.g(class: band_pattern.class.name.split('::').last) do |group|
+            band_pattern.bands.each do |band|
+              group.rect(x: x,  y: 0, width: band.width, height: height, fill: band.color)
+              x += band.width
+            end
+          end
+        end
+      end
     end
 
     private
