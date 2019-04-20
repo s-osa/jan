@@ -22,11 +22,27 @@ describe Jan::Symbol do
       expect(patterns[15]).to be_an_instance_of Jan::Symbol::BandPattern::NormalGuardPattern
       expect(patterns[16]).to be_an_instance_of Jan::Symbol::BandPattern::RightQuietZone
     end
+  end
 
-    # it 'has correctly-encoded symbol characters' do
-    #   symbol_characters = symbol.band_patterns.grep(Jan::Symbol::BandPattern::SymbolCharacter)
+  describe '#codepoints' do
+    mappings = {
+      '0123456789012' => %w[A1 A2 A3 A4 A5 A6 C7 C8 C9 C0 C1 C2],
+      '1123456789012' => %w[A1 A2 B3 A4 B5 B6 C7 C8 C9 C0 C1 C2],
+      '2123456789012' => %w[A1 A2 B3 B4 A5 B6 C7 C8 C9 C0 C1 C2],
+      '3123456789012' => %w[A1 A2 B3 B4 B5 A6 C7 C8 C9 C0 C1 C2],
+      '4123456789012' => %w[A1 B2 A3 A4 B5 B6 C7 C8 C9 C0 C1 C2],
+      '5123456789012' => %w[A1 B2 B3 A4 A5 B6 C7 C8 C9 C0 C1 C2],
+      '6123456789012' => %w[A1 B2 B3 B4 A5 A6 C7 C8 C9 C0 C1 C2],
+      '7123456789012' => %w[A1 B2 A3 B4 A5 B6 C7 C8 C9 C0 C1 C2],
+      '8123456789012' => %w[A1 B2 A3 B4 B5 A6 C7 C8 C9 C0 C1 C2],
+      '9123456789012' => %w[A1 B2 B3 A4 B5 A6 C7 C8 C9 C0 C1 C2],
+    }
 
-    #   expect(symbol_character[0]).to eq Jan::Symbol::BandPattern.new('kk
-    # end
+    mappings.each do |code, answer|
+      it 'returns codepoints with correct set' do
+        symbol = described_class.new(code)
+        expect(symbol.codepoints).to eq answer
+      end
+    end
   end
 end
