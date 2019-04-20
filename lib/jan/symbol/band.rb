@@ -1,3 +1,6 @@
+require 'jan/symbol/band/bar'
+require 'jan/symbol/band/space'
+
 module Jan
   class Symbol
     class Band
