@@ -25,8 +25,17 @@ module Jan
 
     # @return [Array<String>]
     def codepoints
-      additional_digit, *digits = @code.each_char.to_a
-      variable_parity_encodation_sequence(additional_digit).zip(digits).map(&:join)
+      case @code.length
+      when 13
+        additional_digit, *digits = @code.each_char.to_a
+        variable_parity_encodation_sequence(additional_digit).zip(digits).map(&:join)
+      when 8
+        digits = @code.each_char.to_a
+        parity_encodation_sequence = %w[A A A A C C C C]
+        parity_encodation_sequence.zip(digits).map(&:join)
+      else
+        raise 'Invalid code length (code must be 13-digit or 8 digit)'
+      end
     end
 
     # EXPERIMENTAL
@@ -34,12 +43,13 @@ module Jan
     # @return [String]
     def svg
       x = 0
+      width = svg_width(@code)
       height = 60
 
       builder = Builder::XmlMarkup.new(indent: 2)
       builder.instruct!(:xml, version: '1.0', encoding: 'UTF-8')
-      builder.svg(xmlns: 'http://www.w3.org/2000/svg', width: 113, height: height) do |svg|
-        svg.rect(x: 0, y: 0, width: 113, height: 60, fill: 'white')
+      builder.svg(xmlns: 'http://www.w3.org/2000/svg', width: width, height: height) do |svg|
+        svg.rect(x: 0, y: 0, width: width, height: 60, fill: 'white')
         band_patterns.each do |band_pattern|
           svg.g(class: band_pattern.class.name.split('::').last) do |group|
             band_pattern.bands.each do |band|
@@ -55,16 +65,26 @@ module Jan
 
     # @return [Array<Jan::Symbol::BandPattern::SymbolCharacter>]
     def left_symbol_characters
-      codepoints[0..5].map { |codepoint|
-        BandPattern::SymbolCharacter.new(codepoint)
-      }
+      case @code.length
+      when 13
+        codepoints[0..5].map { |codepoint| BandPattern::SymbolCharacter.new(codepoint) }
+      when 8
+        codepoints[0..3].map { |codepoint| BandPattern::SymbolCharacter.new(codepoint) }
+      else
+        raise
+      end
     end
 
     # @return [Array<Jan::Symbol::BandPattern::SymbolCharacter>]
     def right_symbol_characters
-      codepoints[6..11].map { |codepoint|
-        BandPattern::SymbolCharacter.new(codepoint)
-      }
+      case @code.length
+      when 13
+        codepoints[6..11].map { |codepoint| BandPattern::SymbolCharacter.new(codepoint) }
+      when 8
+        codepoints[4..7].map { |codepoint| BandPattern::SymbolCharacter.new(codepoint) }
+      else
+        raise
+      end
     end
 
     # @param digit [String]
@@ -91,6 +111,19 @@ module Jan
         %w[A B A B B A C C C C C C]
       when '9'
         %w[A B B A B A C C C C C C]
+      end
+    end
+
+    # @param code [String]
+    # @return [Integer]
+    def svg_width(code)
+      case code.length
+      when 13
+        113
+      when 8
+        85
+      else
+        raise
       end
     end
   end
