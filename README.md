@@ -50,10 +50,10 @@ code.instore_marking? # => false
 ### Calculate check digit
 
 ```ruby
-body = Jan::CodeBody.new('490127724112') 
+body = Jan::CodeBody.new('490127724112')
 
 body.calculate_check_digit # => '6'
-body.generage_code # => '4901277241126'
+body.generate_code # => '4901277241126'
 ```
 
 ### Generate random code
